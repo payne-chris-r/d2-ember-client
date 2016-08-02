@@ -22,6 +22,19 @@ export default Ember.Route.extend({
       let unauthorized = reason.errors.some((error) =>
         error.status === '401'
       );
+      let notFound = reason.errors.some((error) =>
+        error.status === '404'
+      );
+
+      //probably need a switch here
+      if(notFound){
+        this.get('flashMessages')
+        .danger('Page not found!!');
+        // this.transitionTo('/users');
+      } else {
+        this.get('flashMessages')
+        .danger('There was a problem with your request. Please try again.');
+      }
 
       if (unauthorized) {
         this.get('flashMessages')

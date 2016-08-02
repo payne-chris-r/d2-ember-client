@@ -8,6 +8,11 @@
         <li>{{#link-to "users"}}Users{{/link-to}}</li>
         {{/if}}
       </ul>
+      <ul class="nav navbar-nav">
+        {{#if isAuthenticated}}
+        <li>{{#link-to "profile"}}Profile{{/link-to}}</li>
+        {{/if}}
+      </ul>
       <ul class="nav navbar-nav navbar-right">
         {{#if isAuthenticated}}
         <li>{{#link-to "change-password"}}Change Password{{/link-to}}</li>
