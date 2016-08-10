@@ -1,0 +1,18 @@
+<h2>Games</h2>
+
+<ul>
+  {{#each model as |game|}}
+    <li>
+      <ul><h3>{{#link-to "game" game }}Game {{game.id}}{{/link-to}}</h3>
+        {{#each game.players as |player|}}
+          <li> Player {{player.id}} </li>
+        {{/each}}
+        <button class='btn'>Join Team</button>
+      </ul>
+      {{!-- change this to if 'hasSpace' is true --}}
+      {{!-- {{#if hasSpace}} --}}
+        {{!-- <button class='btn'>Join Team</button> --}}
+      {{!-- {{/if}} --}}
+    </li>
+  {{/each}}
+</ul>
