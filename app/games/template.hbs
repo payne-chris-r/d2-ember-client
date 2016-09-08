@@ -3,11 +3,13 @@
 <ul>
   {{#each model as |game|}}
     <li>
-      <ul><h3>{{#link-to "game" game }}Game {{game.id}}{{/link-to}}</h3>
+      <ul>
+        <h3>{{#link-to "game" game }} Game {{game.id}}{{/link-to}}</h3>
         {{#each game.players as |player|}}
           <li> Player {{player.id}} </li>
+          <li> Ember Player obj is {{player}}</li>
         {{/each}}
-        <button class='btn'>Join Team</button>
+        {{join-team game=game}}
       </ul>
       {{!-- change this to if 'hasSpace' is true --}}
       {{!-- {{#if hasSpace}} --}}

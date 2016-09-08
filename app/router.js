@@ -15,6 +15,9 @@ Router.map(function () {
   this.route('user', { path: '/users/:id' });
   this.route('games');
   this.route('game', { path: '/games/:id' });
+  // is this what we call it
+  this.route('join-team/id', { path: 'join-team/:id' });
+  //                         and this is what ember interprets as ?
 });
 
 export default Router;
