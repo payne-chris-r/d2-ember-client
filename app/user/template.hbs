@@ -1,3 +1,9 @@
 {{model.profile.first_name}}
 {{model.profile.last_name}}
 {{model.profile.nationality}}
+{{#link-to 'profile/edit' profile=model.profile}}
+  <button type="submit" class="btn btn-primary" {{action "edit"}}>
+    Edit
+  </button>
+{{/link-to}}
+{{!-- link to 'update-profile' new route? send profile first, last, nat --}}

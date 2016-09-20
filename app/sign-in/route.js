@@ -7,7 +7,7 @@ export default Ember.Route.extend({
   actions: {
     signIn (credentials) {
       return this.get('auth').signIn(credentials)
-      .then(() => this.transitionTo('user', this.get('auth.credentials.id')))
+      .then(() => this.transitionTo('profile', this.get('auth.credentials.profile_id')))
       // .then((user) => this.transitionTo('profile', user.profile_id))
       .then(() => this.get('flashMessages').success('Thanks for signing in!'))
       .catch(() => {

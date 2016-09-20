@@ -1,6 +1,11 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+  model () {
+    return Ember.RSVP.hash({
+      profile: this.get('store').findRecord('profile', this.get('auth.credentials.profile_id')),
+    });
+  },
   auth: Ember.inject.service(),
   flashMessages: Ember.inject.service(),
 
@@ -18,34 +23,34 @@ export default Ember.Route.extend({
       this.store.unloadAll();
     },
 
-    error (reason) {
-      let unauthorized = reason.errors.some((error) =>
-        error.status === '401'
-      );
-      let notFound = reason.errors.some((error) =>
-        error.status === '404'
-      );
-
-      //probably need a switch here
-      if(notFound){
-        this.get('flashMessages')
-        .danger('Page not found!!');
-        // this.transitionTo('/users');
-      } else {
-        this.get('flashMessages')
-        .danger('There was a problem with your request. Please try again.');
-      }
-
-      if (unauthorized) {
-        this.get('flashMessages')
-        .danger('You must be authenticated to access this page.');
-        this.transitionTo('/sign-in');
-      } else {
-        this.get('flashMessages')
-        .danger('There was a problem. Please try again.');
-      }
-
-      return false;
-    },
+    // error (reason) {
+    //   let unauthorized = reason.errors.some((error) =>
+    //     error.status === '401'
+    //   );
+    //   let notFound = reason.errors.some((error) =>
+    //     error.status === '404'
+    //   );
+    //
+    //   //probably need a switch here
+    //   if(notFound){
+    //     this.get('flashMessages')
+    //     .danger('Page not found!!');
+    //     // this.transitionTo('/users');
+    //   } else {
+    //     this.get('flashMessages')
+    //     .danger('There was a problem with your request. Please try again.');
+    //   }
+    //
+    //   if (unauthorized) {
+    //     this.get('flashMessages')
+    //     .danger('You must be authenticated to access this page.');
+    //     this.transitionTo('/sign-in');
+    //   } else {
+    //     this.get('flashMessages')
+    //     .danger('There was a problem. Please try again.');
+    //   }
+    //
+    //   return false;
+    // },
   },
 });
