@@ -18,6 +18,7 @@ Router.map(function () {
   // is this what we call it
   this.route('join-team/id', { path: 'join-team/:id' });
   //                         and this is what ember interprets as ?
+  this.route('profile/edit', { path: 'profiles/:id/edit'});
 });
 
 export default Router;

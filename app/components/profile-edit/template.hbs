@@ -1,0 +1,16 @@
+Editing {{profile.first_name}} {{profile.last_name}}'s Profile #{{profile.id}}
+
+<form {{action 'editFirstName' on='submit'}}>
+  {{input placeholder='First Name'
+          class='input-group form-control'
+          value=profile.newFirstName
+  }}
+  {{!-- {{input placeholder='New Last Name'
+          class='input-group form-control'
+          value=profile.newLastName
+  }}
+  {{input placeholder='New Nationality'
+          class='input-group form-control'
+          value=profile.newNationality
+  }} --}}
+</form>
