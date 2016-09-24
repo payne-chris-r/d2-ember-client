@@ -1,16 +1,17 @@
 Editing {{profile.first_name}} {{profile.last_name}}'s Profile #{{profile.id}}
-
+<p>YOU ARE LOOKING AT THE PROFILE-EDIT COMPONENT</p>
 <form {{action 'editFirstName' on='submit'}}>
   {{input placeholder='First Name'
           class='input-group form-control'
           value=profile.newFirstName
   }}
-  {{!-- {{input placeholder='New Last Name'
+  {{input placeholder='Last Name'
           class='input-group form-control'
           value=profile.newLastName
   }}
   {{input placeholder='New Nationality'
           class='input-group form-control'
           value=profile.newNationality
-  }} --}}
+  }}
+  <input type='submit' value='Save'>
 </form>

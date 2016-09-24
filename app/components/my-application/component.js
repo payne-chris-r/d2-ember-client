@@ -5,11 +5,9 @@ export default Ember.Component.extend({
   store: Ember.inject.service(),
 
   user: Ember.computed.alias('auth.credentials'),
-  profile: Ember.computed('user', function(){
-    return this.get('store').findRecord('profile', this.get('auth.credentials.profile_id'));
-  }),
-  // profile: Ember.computed('user.id', function () {
-  //   return this.get('store').queryRecord('profile', { user: this.get('user.id')});
+  profile_id: Ember.computed.alias('auth.credentials.profile_id'),
+  // profile: Ember.computed(function(){
+  //   return this.get('store').findRecord('profile', this.get('auth.credentials.profile_id'));
   // }),
   isAuthenticated: Ember.computed.alias('auth.isAuthenticated'),
 

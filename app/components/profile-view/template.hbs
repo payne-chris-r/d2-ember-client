@@ -2,7 +2,11 @@
   {{profile.first_name}}
   {{profile.last_name}}
   {{profile.nationality}}
-    {{#link-to 'profile/edit' model=profile}}
+  Something here
+  {{#link-to 'profile/edit' profile}}
+    <button class="btn btn-primary">
       Edit
-    {{/link-to}}
+    </button>
+  {{/link-to}}
+  {{!-- {{profile-edit profile=profile editFirstName='editFirstName'}} --}}
 </ul>
