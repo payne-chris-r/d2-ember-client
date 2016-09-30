@@ -9,10 +9,10 @@
           <li> Player {{player.id}} </li>
           {{!-- <li> Ember game.Player obj is {{game.players.length}}</li> --}}
         {{/each}}
-        {{join-team game=game joinGame='joinGame'}}
-        {{#if game.full?}}
-          <button class='btn'>sdlfjsdlkfj</button>
-          <p>{{hasSpace}}</p>
+        {{#if game.full}}
+          <p>THIS GAME IS FULL</p>
+        {{else}}
+          {{join-team game=game joinGame='joinGame'}}
         {{/if}}
       </ul>
     </li>
