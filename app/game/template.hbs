@@ -1,8 +1,11 @@
 {{#each model.players as |player|}}
   {{player.id}}
 {{/each}}
-{{#if hasSpace}}
-  yuuup
+{{#if model.full}}
+  Game is full
   {{else}}
-  nnnope
+  There are open spaces in this lobby.
 {{/if}}
+{{#link-to 'games'}}
+  <button type="button">Back to All Games</button>
+{{/link-to}}

@@ -26,20 +26,28 @@ export default Ember.Route.extend({
           console.log("1. profile is ", profile);
           this.get('store').findRecord('game', +game.id)
             .then((game)=>{
+              console.log("game.players is ", game.players);
               newPlayer.set('game', game);
             })
             .then(()=>{
               newPlayer.set('character_id', 3);
             })
             .then(()=>{
-              newPlayer.save();
+              newPlayer.save()
+              .catch((err)=>{
+                console.error(err);
+                console.log("You can only join a game once!");
+                this.transitionTo('game', game.id);
+              });
             })
             .catch((err)=>{
               console.error(err);
+              console.log("You can only join a game once!");
             });
         })
         .catch((err)=>{
           console.error(err);
+          console.log("You can only join a game once!");
         });
     },
   },

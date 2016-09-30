@@ -7,7 +7,9 @@
         <h3>{{#link-to "game" game }} Game {{game.id}}{{/link-to}}</h3>
         {{#each game.players as |player|}}
           <li> Player {{player.id}} </li>
-          {{!-- <li> Ember game.Player obj is {{game.players.length}}</li> --}}
+          <li> Player's profile is {{player.profile}} </li>
+          <li> Current User's profile is {{profile.id}} </li>
+          <li> Ember game.Player obj is {{game.players}}</li>
         {{/each}}
         {{#if game.full}}
           <p>THIS GAME IS FULL</p>
