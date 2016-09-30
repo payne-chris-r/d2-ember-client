@@ -7,14 +7,14 @@
         <h3>{{#link-to "game" game }} Game {{game.id}}{{/link-to}}</h3>
         {{#each game.players as |player|}}
           <li> Player {{player.id}} </li>
-          <li> Ember Player obj is {{player}}</li>
+          {{!-- <li> Ember game.Player obj is {{game.players.length}}</li> --}}
         {{/each}}
-        {{join-team game=game}}
+        {{join-team game=game joinGame='joinGame'}}
+        {{#if game.full?}}
+          <button class='btn'>sdlfjsdlkfj</button>
+          <p>{{hasSpace}}</p>
+        {{/if}}
       </ul>
-      {{!-- change this to if 'hasSpace' is true --}}
-      {{!-- {{#if hasSpace}} --}}
-        {{!-- <button class='btn'>Join Team</button> --}}
-      {{!-- {{/if}} --}}
     </li>
   {{/each}}
 </ul>

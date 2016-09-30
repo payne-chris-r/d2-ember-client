@@ -3,7 +3,7 @@ import DS from 'ember-data';
 export default DS.Model.extend({
   profile: DS.belongsTo('profile'),
   game: DS.belongsTo('game'),
-  hero_picked: DS.attr('string'),
+  character_id: DS.attr('string'),
   kills: DS.attr('string')
 });
 
