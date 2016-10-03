@@ -1,5 +1,9 @@
-Editing {{profile.first_name}} {{profile.last_name}}'s Profile #{{profile.id}}
-<p>YOU ARE LOOKING AT THE PROFILE-EDIT COMPONENT</p>
+{{#if profile.first_name}}
+  Editing {{profile.first_name}} {{profile.last_name}}'s Profile #{{profile.id}}
+{{else}}
+  Create your new profile!
+{{/if}}
+
 <form {{action 'editFirstName' on='submit'}}>
   {{input placeholder='First Name'
           class='input-group form-control'
