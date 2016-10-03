@@ -4,12 +4,9 @@ export default Ember.Route.extend({
   auth: Ember.inject.service(),
 
   model () {
+    // WHY DO I NEED THIS?
+    this.get('store').findAll('profile');
     return this.get('store').findAll('game');
-  },
-
-  player: {
-    profile_id: null,
-    game_id: null,
   },
   hasSpace: Ember.computed.alias('game.full?'),
   profile_id: Ember.computed.alias('auth.credentials.profile_id'),
