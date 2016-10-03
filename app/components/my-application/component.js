@@ -6,9 +6,6 @@ export default Ember.Component.extend({
 
   user: Ember.computed.alias('auth.credentials'),
   profile_id: Ember.computed.alias('auth.credentials.profile_id'),
-  // profile: Ember.computed(function(){
-  //   return this.get('store').findRecord('profile', this.get('auth.credentials.profile_id'));
-  // }),
   isAuthenticated: Ember.computed.alias('auth.isAuthenticated'),
 
   actions: {
