@@ -19,7 +19,6 @@ export default Ember.Route.extend({
       let newPlayer = this.get('store').createRecord('player', newPlayer);
       this.get('store').findRecord('profile', profile_id)
         .then((profile)=>{
-          console.log("1. profile is ", profile);
           this.get('store').findRecord('game', +game.id)
             .then((game)=>{
               console.log("game.players is ", game.players);
@@ -32,18 +31,17 @@ export default Ember.Route.extend({
               newPlayer.save()
               .catch((err)=>{
                 console.error(err);
+                /// WHAT? HOW? <-- database is checking uniqueness
                 console.log("You can only join a game once!");
                 this.transitionTo('game', game.id);
               });
             })
             .catch((err)=>{
               console.error(err);
-              console.log("You can only join a game once!");
             });
         })
         .catch((err)=>{
           console.error(err);
-          console.log("You can only join a game once!");
         });
     },
   },
