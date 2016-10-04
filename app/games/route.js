@@ -5,7 +5,7 @@ export default Ember.Route.extend({
 
   model () {
     // WHY DO I NEED THIS?
-    this.get('store').findAll('profile');
+    // this.get('store').findAll('profile');
     return this.get('store').findAll('game');
   },
   hasSpace: Ember.computed.alias('game.full?'),
@@ -14,7 +14,6 @@ export default Ember.Route.extend({
       return this.get('store').findRecord('profile', this.get('profile_id'));
   }),
   actions: {
-    // joinGame: 'something',
     joinGame: function(game){
       let profile_id = this.get('profile_id');
       let newPlayer = this.get('store').createRecord('player', newPlayer);

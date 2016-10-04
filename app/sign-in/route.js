@@ -7,29 +7,21 @@ export default Ember.Route.extend({
   actions: {
     signIn (credentials) {
       return this.get('auth').signIn(credentials)
-      .then(() => {
-        console.log("inside promise ");
+      .then((user) => {
         let profile_id = this.get('auth.credentials.profile_id');
         if(profile_id){
           this.transitionTo('profile', profile_id);
-          console.log("inside promise profile id is ", profile_id);
         }
         else{
-          let newProfile = {
-            user: this.get('auth.credentials.id')
-          };
-          // IS CREATE RECORD ASYNC?
-          newProfile = this.get('store').createRecord('profile', newProfile);
-          console.log("inside new profile is ", newProfile);
+          let newProfile = this.get('store').createRecord('profile')
+                                            .set('user', user);
           newProfile.save()
             .then((profile)=>{
-              console.log("inside promise profile was not defined? It is ", profile.id);
-              this.transitionTo('profile-edit', profile.id);
+              this.transitionTo('profile/edit', profile.id);
             })
             .catch(console.error);
         }
       })
-      // .then((user) => this.transitionTo('profile', user.profile_id))
       .then(() => this.get('flashMessages').success('Thanks for signing in!'))
       .catch(() => {
         this.get('flashMessages')
