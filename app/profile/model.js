@@ -6,6 +6,6 @@ export default DS.Model.extend({
   last_name: DS.attr('string'),
   nationality: DS.attr('string'),
   user: DS.belongsTo('user'),
-  players: DS.hasMany('player'),
+  // players: DS.hasMany('player'),
   games: DS.hasMany('game')
 });

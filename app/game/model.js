@@ -1,7 +1,7 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
-  players: DS.hasMany('player'),
+  // players: DS.hasMany('player'),
   profiles: DS.hasMany('profile'),
   full: DS.attr('boolean')
 });

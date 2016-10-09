@@ -8,7 +8,7 @@ export default Ember.Route.extend({
     signUp (credentials) {
       this.get('auth').signUp(credentials)
       .then(() => this.get('auth').signIn(credentials))
-      .then((user)=>{
+      .then((/*user*/)=>{
         return this.get('store').createRecord('profile', { user: null });
       })
       .then((profile)=>{

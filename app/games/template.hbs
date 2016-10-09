@@ -10,13 +10,14 @@
           <th>Nationality:</th>
         </tr>
 
-        {{#each game.players as |player|}}
+        
+        {{#each game.profiles as |profile|}}
         {{!-- Gameview: --}}
         {{!-- {{game-view player_id=player}} --}}
           <tr>
-            <td> {{player.id}} </td>
-            <td> {{player.profile.first_name}} {{player.profile.last_name}}  </td>
-            <td> {{player.profile.nationality}} </td>
+            <td> {{profile.id}} </td>
+            <td> {{profile.first_name}} {{profile.last_name}}  </td>
+            <td> {{profile.nationality}} </td>
           </tr>
         {{/each}}
         {{#if game.full}}
