@@ -13,6 +13,8 @@ export default Ember.Route.extend({
   profile: Ember.computed('auth.credentials.profile_id', function(){
       return this.get('store').findRecord('profile', this.get('profile_id'));
   }),
+
+
   actions: {
     joinGame: function(game){
       let profile_id = this.get('profile_id');
@@ -45,14 +47,4 @@ export default Ember.Route.extend({
         });
     },
   },
-  // profiles: this.get('store').findRecord('profile', by game id?)
-  // add 'hasSpace'
-  // hasSpace: Ember.computed('game.players', function(){
-  //   if(this.get('game.players') < 4){
-  //     return true;
-  //   }
-  //   else{
-  //     return false;
-  //   }
-  // }),
 });

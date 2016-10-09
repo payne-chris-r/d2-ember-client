@@ -1,36 +1,30 @@
 <h2>Games</h2>
-<ul>
+
+<h2>PROFILES IS {{players}}</h2>
   {{#each model as |game|}}
   <h3>{{#link-to "game" game }} Game {{game.id}}{{/link-to}}</h3>
-    <li>
-      <table>
-        <tr>
+      <table class='game-view'>
+        <tr class='table-row'>
           <th>Player ID:</th>
           <th>Name:</th>
           <th>Nationality:</th>
         </tr>
 
-        
+
+
         {{#each game.profiles as |profile|}}
         {{!-- Gameview: --}}
-        {{!-- {{game-view player_id=player}} --}}
-          <tr>
+        {{!-- {{game-view game=game}} --}}
+          <tr class='table-row'>
             <td> {{profile.id}} </td>
             <td> {{profile.first_name}} {{profile.last_name}}  </td>
             <td> {{profile.nationality}} </td>
           </tr>
         {{/each}}
         {{#if game.full}}
-          <tr>THIS GAME IS FULL</tr>
+          <tr class='table-row'>THIS GAME IS FULL</tr>
         {{else}}
           <tr>{{join-team game=game joinGame='joinGame'}}</tr>
         {{/if}}
       </table>
-      <ul>
-
-
-
-      </ul>
-    </li>
   {{/each}}
-</ul>
