@@ -1,30 +1,34 @@
 <h2>Games</h2>
 
 <h2>PROFILES IS {{players}}</h2>
-  {{#each model as |game|}}
+{{#each model as |game|}}
   <h3>{{#link-to "game" game }} Game {{game.id}}{{/link-to}}</h3>
-      <table class='game-view'>
-        <tr class='table-row'>
-          <th>Player ID:</th>
-          <th>Name:</th>
-          <th>Nationality:</th>
-        </tr>
-
-
-
-        {{#each game.profiles as |profile|}}
-        {{!-- Gameview: --}}
-        {{!-- {{game-view game=game}} --}}
-          <tr class='table-row'>
-            <td> {{profile.id}} </td>
-            <td> {{profile.first_name}} {{profile.last_name}}  </td>
-            <td> {{profile.nationality}} </td>
-          </tr>
-        {{/each}}
-        {{#if game.full}}
-          <tr class='table-row'>THIS GAME IS FULL</tr>
-        {{else}}
-          <tr>{{join-team game=game joinGame='joinGame'}}</tr>
-        {{/if}}
-      </table>
-  {{/each}}
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Player ID:</th>
+        <th>Name:</th>
+        <th>Nationality:</th>
+      </tr>
+    </thead>
+    <tbody>
+    {{#each game.profiles as |profile|}}
+    {{!-- Gameview: --}}
+    {{!-- {{game-view game=game}} --}}
+      <tr>
+        <td> {{profile.id}} </td>
+        <td> {{profile.first_name}} {{profile.last_name}}  </td>
+        <td> {{profile.nationality}} </td>
+      </tr>
+    {{/each}}
+    </tbody>
+    {{#if game.full}}
+      <tr>THIS GAME IS FULL</tr>
+    {{else}}
+      <tr>
+        <td>{{join-team game=game joinGame='joinGame'}}</td>
+        <td>{{leave-team game=game leaveGame='leaveGame'}}</td>
+      </tr>
+    {{/if}}
+  </table>
+{{/each}}

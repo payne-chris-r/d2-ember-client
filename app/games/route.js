@@ -4,8 +4,6 @@ export default Ember.Route.extend({
   auth: Ember.inject.service(),
 
   model () {
-    // WHY DO I NEED THIS?
-    // this.get('store').findAll('profile');
     return this.get('store').findAll('game');
   },
   hasSpace: Ember.computed.alias('game.full?'),
@@ -17,9 +15,8 @@ export default Ember.Route.extend({
 
   actions: {
     joinGame: function(game){
-      let profile_id = this.get('profile_id');
       let newPlayer = this.get('store').createRecord('player', newPlayer);
-      this.get('store').findRecord('profile', profile_id)
+      this.get('store').findRecord('profile', this.get('profile_id'))
         .then((profile)=>{
           this.get('store').findRecord('game', +game.id)
             .then((game)=>{
@@ -28,6 +25,7 @@ export default Ember.Route.extend({
             })
             .then(()=>{
               newPlayer.set('character_id', 3);
+              newPlayer.set('kills', 3);
             })
             .then(()=>{
               newPlayer.save()
@@ -45,6 +43,32 @@ export default Ember.Route.extend({
         .catch((err)=>{
           console.error(err);
         });
+    },
+    leaveGame: function(game){
+      console.log("Game is ", game.id);
+      this.get('store')
+        .queryRecord('player', { game_id: game.id,
+                                 profile_id: this.get('profile_id') })
+      .then((player)=>{
+        let playerProfileId = parseInt(player.get('profile.id'));
+        if(playerProfileId === this.get('profile_id')){
+          player.destroyRecord()
+            .then((what)=>{
+              console.log("What is ", what);
+            })
+            .catch((err)=>{
+              console.error(err);
+            });
+        }
+        else{
+          console.log("You don't have rights to remove that player");
+        }
+        // console.log("players 1st promise is", players);
+        // console.log("players[0] 1st promise is", players.get('length'));
+      })
+      .catch((err)=>{
+        console.error(err);
+      });
     },
   },
 });
