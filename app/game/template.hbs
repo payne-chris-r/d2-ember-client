@@ -8,9 +8,9 @@ Team:
 </div>
 {{/each}}
 {{#if model.open}}
-  Game is open
+  <span class='open'>Game is OPEN</span>
   {{else}}
-  There are open spaces in this lobby.
+  <span class='closed'>There are no open spaces in this lobby.</span>
 {{/if}}
 {{#link-to 'games'}}
   <button type="button">Back to All Games</button>
