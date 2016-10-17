@@ -6,14 +6,18 @@ export default Ember.Route.extend({
   model () {
     return this.get('store').findAll('game');
   },
+
   hasSpace: Ember.computed.alias('game.full?'),
   profile_id: Ember.computed.alias('auth.credentials.profile_id'),
   profile: Ember.computed('auth.credentials.profile_id', function(){
       return this.get('store').findRecord('profile', this.get('profile_id'));
   }),
-
+  isAuthenticated: Ember.computed.alias('auth.isAuthenticated'),
 
   actions: {
+    unAuth: function(){
+      this.transitionTo('sign-in');
+    },
     joinGame: function(game){
       let newPlayer = this.get('store').createRecord('player', newPlayer);
       this.get('store').findRecord('profile', this.get('profile_id'))
