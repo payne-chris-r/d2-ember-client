@@ -25,10 +25,17 @@
     {{#if game.full}}
       <tr>THIS GAME IS FULL</tr>
     {{else}}
+      {{#if isAuthenticated}}
       <tr>
         <td>{{join-team game=game joinGame='joinGame'}}</td>
         <td>{{leave-team game=game leaveGame='leaveGame'}}</td>
       </tr>
+      {{else}}
+        <tr>
+          <td>{{unauth-button name='Join Game' unAuth='unAuth'}}</td>
+          <td>{{unauth-button name='Leave Game' unAuth='unAuth'}}</td>
+        </tr>
+      {{/if}}
     {{/if}}
   </table>
 {{/each}}
