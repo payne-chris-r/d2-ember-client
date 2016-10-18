@@ -8,6 +8,11 @@ export default Ember.Route.extend({
   },
 
   hasSpace: Ember.computed.alias('game.full?'),
+  max: 5,
+  numOfTimes: Ember.computed('max', function(){
+    let times = this.get('max');
+    return new Array(parseInt(times));
+  }),
   profile_id: Ember.computed.alias('auth.credentials.profile_id'),
   profile: Ember.computed('auth.credentials.profile_id', function(){
       return this.get('store').findRecord('profile', this.get('profile_id'));

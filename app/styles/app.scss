@@ -1,2 +1,19 @@
 @import 'bootstrap';
 @import 'bootstrap/theme';
+
+.relative {
+  position: relative;
+}
+
+.poopybutt {
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 1000;
+}
+
+.centered {
+  text-align: center;
+  background-color: red;
+}

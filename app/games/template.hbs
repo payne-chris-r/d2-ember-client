@@ -1,32 +1,38 @@
 <h2>Games</h2>
-
-<h2>PROFILES IS {{players}}</h2>
+{{atMax}}
+{{#each atMax}}
+  <h2>sdlkfj</h2>
+{{/each}}
 {{#each model as |game|}}
-  <h3>{{#link-to "game" game }} Game {{game.id}}{{/link-to}}</h3>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Player ID:</th>
-        <th>Name:</th>
-        <th>Nationality:</th>
-      </tr>
-    </thead>
-    <tbody>
-      {{#each game.profiles as |profile|}}
+  <div>
+    <h3>{{#link-to "game" game }} Game {{game.id}}{{/link-to}}</h3>
+    <table class="table table-striped">
+      <thead>
         <tr>
-          <td> {{profile.id}} </td>
-          <td> {{profile.first_name}} {{profile.last_name}}  </td>
-          <td> {{profile.nationality}} </td>
+          <th>Player ID:</th>
+          <th>Name:</th>
+          <th>Nationality:</th>
         </tr>
-      {{/each}}
+      </thead>
+      <tbody>
+        {{#each game.profiles as |profile|}}
+          <tr>{{player-row profile=profile}} {{index}}</tr>
+        {{/each}}
+        {{#each (range game.profiles.length 5) as |index|}}
+          <tr>{{player-row}} {{index}}</tr>
+        {{/each}}
       </tbody>
-    {{#if game.full}}
-      <tr>THIS GAME IS FULL</tr>
-    {{else}}
-      {{game-buttons game=game
-                     unAuth='unAuth'
-                     joinGame='joinGame'
-                     leaveGame='leaveGame'}}
-    {{/if}}
-  </table>
+    </table>
+    <div class='centered'>
+      {{#if game.open}}
+        {{game-buttons game=game
+                       unAuth='unAuth'
+                       joinGame='joinGame'
+                       leaveGame='leaveGame'}}
+      {{else}}
+        {{!-- <tr class='centered' colspan="1">{{unauth-button name='UA Game full'}}</tr> --}}
+        <p class='centered'>UA Game full</p>
+      {{/if}}
+    </div>
+  </div>
 {{/each}}
