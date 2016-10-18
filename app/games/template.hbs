@@ -12,30 +12,21 @@
       </tr>
     </thead>
     <tbody>
-    {{#each game.profiles as |profile|}}
-    {{!-- Gameview: --}}
-    {{!-- {{game-view game=game}} --}}
-      <tr>
-        <td> {{profile.id}} </td>
-        <td> {{profile.first_name}} {{profile.last_name}}  </td>
-        <td> {{profile.nationality}} </td>
-      </tr>
-    {{/each}}
-    </tbody>
+      {{#each game.profiles as |profile|}}
+        <tr>
+          <td> {{profile.id}} </td>
+          <td> {{profile.first_name}} {{profile.last_name}}  </td>
+          <td> {{profile.nationality}} </td>
+        </tr>
+      {{/each}}
+      </tbody>
     {{#if game.full}}
       <tr>THIS GAME IS FULL</tr>
     {{else}}
-      {{#if isAuthenticated}}
-      <tr>
-        <td>{{join-team game=game joinGame='joinGame'}}</td>
-        <td>{{leave-team game=game leaveGame='leaveGame'}}</td>
-      </tr>
-      {{else}}
-        <tr>
-          <td>{{unauth-button name='Join Game' unAuth='unAuth'}}</td>
-          <td>{{unauth-button name='Leave Game' unAuth='unAuth'}}</td>
-        </tr>
-      {{/if}}
+      {{game-buttons game=game
+                     unAuth='unAuth'
+                     joinGame='joinGame'
+                     leaveGame='leaveGame'}}
     {{/if}}
   </table>
 {{/each}}

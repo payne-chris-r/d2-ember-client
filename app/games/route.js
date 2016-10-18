@@ -56,7 +56,10 @@ export default Ember.Route.extend({
       // queryRecord returns `null`, but doesn't trigger `catch`
 
 
-      .then((player)=> player.destroyRecord())
+      .then((player)=> {
+        console.log("player is ", player);
+        player.destroyRecord()
+      })
       // .then((player)=>{
       //   console.log("Player is null? ", player);
       //   let playerProfileId = parseInt(player.get('profile.id'));

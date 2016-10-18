@@ -1,0 +1,9 @@
+<tr>
+  {{#if isAuthenticated}}
+    <td>{{join-team game=game joinGame='joinGame'}}</td>
+    <td>{{leave-team game=game leaveGame='leaveGame'}}</td>
+  {{else}}
+    <td>{{unauth-button name='UA Join Game' unAuth='unAuth'}}</td>
+    <td>{{unauth-button name='UA Leave Game' unAuth='unAuth'}}</td>
+  {{/if}}
+</tr>
