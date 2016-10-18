@@ -1,8 +1,5 @@
 <h2>Games</h2>
-{{atMax}}
-{{#each atMax}}
-  <h2>sdlkfj</h2>
-{{/each}}
+
 {{#each model as |game|}}
   <div>
     <h3>{{#link-to "game" game }} Game {{game.id}}{{/link-to}}</h3>
@@ -15,24 +12,30 @@
         </tr>
       </thead>
       <tbody>
-        {{#each game.profiles as |profile|}}
-          <tr>{{player-row profile=profile}} {{index}}</tr>
+        {{#each game.profiles as |profile spot|}}
+          <tr>
+            {{player-row game=game
+                           profile=profile
+                           current=profile_id
+                           leaveGame='leaveGame'}}
+          </tr>
         {{/each}}
         {{#each (range game.profiles.length 5) as |index|}}
-          <tr>{{player-row}} {{index}}</tr>
+          <tr>
+            {{player-row game=game joinGame='joinGame' leaveGame='leaveGame'}}
+          </tr>
         {{/each}}
       </tbody>
     </table>
-    <div class='centered'>
+    {{!-- <div class='centered'>
       {{#if game.open}}
         {{game-buttons game=game
                        unAuth='unAuth'
                        joinGame='joinGame'
                        leaveGame='leaveGame'}}
       {{else}}
-        {{!-- <tr class='centered' colspan="1">{{unauth-button name='UA Game full'}}</tr> --}}
         <p class='centered'>UA Game full</p>
       {{/if}}
-    </div>
+    </div> --}}
   </div>
 {{/each}}

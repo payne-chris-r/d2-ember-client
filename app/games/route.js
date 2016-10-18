@@ -49,6 +49,7 @@ export default Ember.Route.extend({
         });
     },
     leaveGame: function(game){
+      console.log("YOU INSIDE PLAYER ROW YO! Game is ", game);
       if(!(this.get('profile_id'))){
         this.transitionTo('sign-in');
         throw new Error("User needs to sign in.");
