@@ -1,7 +1,7 @@
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid gradient">
     {{navbar-header}}
-    <div class="collapse navbar-collapse" id="navigation">
+    <div class="collapse navbar-collapse" id="navigation" >
       <ul class="nav navbar-nav">
         {{#if isAuthenticated}}
         <li>{{#link-to "users"}}Users{{/link-to}}</li>
@@ -28,8 +28,6 @@
 
   </div>
 </nav>
-
-<h1>Welcome to Team Builder!</h1>
 
 {{#each flashMessages.queue as |flash|}}
   {{flash-message flash=flash}}
