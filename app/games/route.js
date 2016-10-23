@@ -2,7 +2,8 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   auth: Ember.inject.service(),
-
+  classNames: ['main-div'],
+  
   model () {
     return this.get('store').findAll('game');
   },
