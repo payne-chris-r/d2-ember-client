@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top" id="bootstrap-override">
   <div class="container-fluid gradient">
     {{navbar-header}}
     <div class="collapse navbar-collapse" id="navigation" >
@@ -30,9 +30,11 @@
 </nav>
 
 {{#each flashMessages.queue as |flash|}}
-  {{flash-message flash=flash}}
+  <div class="flash-div">
+    {{flash-message flash=flash}}
+  </div>
 {{/each}}
 
-<div class="col-md-8 col-md-offset-2">
+<div class="main-div">
   {{outlet}}
 </div>
