@@ -1,17 +1,36 @@
-Team:
-{{#each model.profiles as |profile|}}
-<div>
-  Player:
-  {{profile.id}}
-  {{profile.first_name}}
-  {{profile.last_name}}
+<div class='container'>
+  <h2>Game {{model.id}}</h2>
+  Team:
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Player ID:</th>
+        <th>Name:</th>
+        <th>Nationality:</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each model.profiles as |profile|}}
+        <tr>
+          {{player-row game=game
+                         profile=profile
+                         current=profile_id
+                         leaveGame='leaveGame'}}
+        </tr>
+      {{/each}}
+      {{#each (range game.profiles.length 5) as |index|}}
+        <tr>
+          {{player-row game=game joinGame='joinGame' leaveGame='leaveGame'}}
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+  {{#if model.open}}
+    <span class='open'>Game is OPEN</span>
+    {{else}}
+    <span class='closed'>There are no open spaces in this lobby.</span>
+  {{/if}}
+  {{#link-to 'games'}}
+    <button type="button">Back to All Games</button>
+  {{/link-to}}
 </div>
-{{/each}}
-{{#if model.open}}
-  <span class='open'>Game is OPEN</span>
-  {{else}}
-  <span class='closed'>There are no open spaces in this lobby.</span>
-{{/if}}
-{{#link-to 'games'}}
-  <button type="button">Back to All Games</button>
-{{/link-to}}
