@@ -6,6 +6,7 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function () {
+  this.route('application/index', {path: '/'});
   this.route('sign-up');
   this.route('sign-in');
   this.route('change-password');
