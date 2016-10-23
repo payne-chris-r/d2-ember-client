@@ -1,6 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+  classNames: ['main-div', 'container'],
+
   actions: {
     editFirstName: function(){
       console.log("Inside profile-edit editFirstName");
