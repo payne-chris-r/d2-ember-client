@@ -13,12 +13,16 @@ $navbar-default-bg: #000;
   position: relative;
 }
 
-.poopybutt {
-  top: 0;
-  left: 0;
-  position: absolute;
-  width: 100%;
-  z-index: 1000;
+.back-red {
+  background-color: red;
+}
+
+.back-green {
+  background-color: green;
+}
+
+.back-blue {
+  background-color: blue;
 }
 
 .centered {
@@ -97,10 +101,19 @@ header {
 }
 
 .flash-div {
-  padding-top: 50px;
+  width: 100%;
+  position: fixed;
+  top: 50px;
+  z-index: 100;
 }
 
+.game-table > thead > tr > th {
+  width: 12.5%;
+}
 
+.game-table > tbody > tr > td > td {
+  width: 25%;
+}
 
 body {
   padding-top: 0px;
