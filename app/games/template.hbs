@@ -3,12 +3,17 @@
 
   {{#each model as |game|}}
     <h3>{{#link-to "game" game }} Game {{game.id}}{{/link-to}}</h3>
-    <table class="table table-striped">
+    <table class="table table-striped game-table">
       <thead>
         <tr>
           <th>Player ID:</th>
           <th>Name:</th>
           <th>Nationality:</th>
+          <th>Ranking:</th>
+          <th>Positions:</th>
+          <th>Abandons/Reports</th>
+          <th>Languages:</th>
+          <th>Status:</th>
         </tr>
       </thead>
       <tbody>
