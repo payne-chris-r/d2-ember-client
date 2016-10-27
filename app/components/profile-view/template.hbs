@@ -1,19 +1,25 @@
-<div>
-  <div class='back-green'>
-    Profile Picture
-  </div>
-  <div>
-    {{#if profile.first_name}}
-    Name: {{profile.first_name}} {{profile.last_name}}
-    Nationality: {{profile.nationality}}
-    {{#link-to 'profile/edit' profile}}
-      <button class="btn btn-primary">
+<div class='container'>
+  <div class="wrapper">
+    <article class="article-header">{{profile.first_name}} {{profile.last_name}}</article>
+    <article class="main-photo">
+      <p>Photo</p>
+    </article>
+    <article class="main">
+      <div>
+        {{#if profile.first_name}}
+          {{profile.first_name}} {{profile.last_name}}
+          Nationality: {{profile.nationality}}
+        {{else}}
+          You haven't set up your profile yet!
+        {{/if}}
+        {{!-- {{profile-edit profile=profile editFirstName='editFirstName'}} --}}
+      </div>
+    </article>
+    <aside class="aside aside-2">Positions</aside>
+    <footer class="footer">Footer
+      {{#link-to 'profile/edit' profile class="btn btn-primary style-button"}}
         Edit
-      </button>
-    {{/link-to}}
-    {{else}}
-      {{profile-edit profile=profile}}
-    {{/if}}
-    {{!-- {{profile-edit profile=profile editFirstName='editFirstName'}} --}}
+      {{/link-to}}
+    </footer>
   </div>
 </div>
