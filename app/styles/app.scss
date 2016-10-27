@@ -8,6 +8,7 @@ $navbar-default-bg: #000;
 
 @import 'bootstrap';
 @import 'bootstrap/theme';
+// @import 'profile';
 
 .relative {
   position: relative;
@@ -115,6 +116,83 @@ header {
   width: 25%;
 }
 
+.style-button {
+  background-color: #F05F40;
+  color: black;
+}
+
 body {
   padding-top: 0px;
 }
+
+
+.wrapper {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+
+  font-weight: bold;
+  text-align: center;
+}
+
+.wrapper > * {
+  padding: 10px;
+  flex: 1 100%;
+}
+
+.article-header {
+  background: black;
+  color: #F05F40;
+}
+
+.footer {
+  background: black;
+  color: #F05F40;
+  text-align: right;
+}
+
+.main {
+  text-align: left;
+  background: deepskyblue;
+  flex: 3;
+}
+
+.main-photo {
+  max-width: 100px;
+  width: 100%;
+  height: 300px;
+  background-image: url('/assets/img/profile.png');
+  background-size: cover;
+  background-position: -15px 0px;
+}
+
+.aside-1 {
+  background: gold;
+}
+
+.aside-2 {
+  background: hotpink;
+}
+
+@media all and (min-width: 600px) {
+  .aside { flex: 1 auto; }
+  .main-photo { max-width: 200px; }
+}
+
+@media all and (min-width: 800px) {
+  .main    { flex: 3 0px; }
+  .main-photo { max-width: 300px; }
+  .aside-1 { order: 1; }
+  .main    { order: 2; }
+  .aside-2 { order: 3; }
+  .footer  { order: 4; }
+}
+
+// body {
+//   padding: 2em;
+// }
