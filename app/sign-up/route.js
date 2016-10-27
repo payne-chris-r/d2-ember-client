@@ -20,6 +20,7 @@ export default Ember.Route.extend({
           })
           .catch(console.error);
         })
+      .then(() => this.get('auth').signIn(credentials))
       .then(() => {
         this.get('flashMessages')
         .success('Successfully signed-up! You have also been signed-in.');
