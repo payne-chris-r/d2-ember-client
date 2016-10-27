@@ -1,23 +1,33 @@
 <div class='container'>
   <div class="wrapper">
     <article class="article-header">{{profile.first_name}} {{profile.last_name}}</article>
+    <article class="article-margin"></article>
+
     <article class="main-photo">
-      <p>Photo</p>
+      <p></p>
     </article>
+    <article class="vertical-margin vertical-margin-1"></article>
     <article class="main">
       <div>
         {{#if profile.first_name}}
-          {{profile.first_name}} {{profile.last_name}}
-          Nationality: {{profile.nationality}}
+          <p>Language: English, Spanish, French, German</p>
+          <p>Ranking: 2900</p>
+          <p>Abandons/Reports: 23/12</p>
+          <p>Nationality: {{profile.nationality}}</p>
         {{else}}
           You haven't set up your profile yet!
         {{/if}}
         {{!-- {{profile-edit profile=profile editFirstName='editFirstName'}} --}}
       </div>
     </article>
-    <aside class="aside aside-2">Positions</aside>
-    <footer class="footer">Footer
-      {{#link-to 'profile/edit' profile class="btn btn-primary style-button"}}
+    <article class="vertical-margin-2"></article>
+    <aside class="aside aside-2">
+      <div>Positions:</div>
+      <div>Carry, Support, Offlane</div>
+    </aside>
+    <article class="article-margin-3"></article>
+    <footer class="footer">
+      {{#link-to 'profile/edit' profile class="btn btn-secondary style-button"}}
         Edit
       {{/link-to}}
     </footer>
