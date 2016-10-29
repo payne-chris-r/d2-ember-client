@@ -11,19 +11,25 @@
       <div>
         {{#if profile.first_name}}
           <p>Language: English, Spanish, French, German</p>
-          <p>Ranking: 2900</p>
+          <p>Ranking: {{profile.ranking}}</p>
           <p>Abandons/Reports: 23/12</p>
           <p>Nationality: {{profile.nationality}}</p>
         {{else}}
           You haven't set up your profile yet!
         {{/if}}
-        {{!-- {{profile-edit profile=profile editFirstName='editFirstName'}} --}}
       </div>
     </article>
     <article class="vertical-margin-2"></article>
     <aside class="aside aside-2">
       <div>Positions:</div>
-      <div>Carry, Support, Offlane</div>
+      <div>
+        <div>{{#if profile.carry}} Carry {{/if}}</div>
+        <div>{{#if profile.support}} Support {{/if}}</div>
+        <div>{{#if profile.mid}} Mid {{/if}}</div>
+        <div>{{#if profile.roamer}} Roamer {{/if}}</div>
+        <div>{{#if profile.jungler}} Jungler {{/if}}</div>
+        <div>{{#if profile.offlaner}} Offlaner {{/if}}</div>
+      </div>
     </aside>
     <article class="article-margin-3"></article>
     <footer class="footer">

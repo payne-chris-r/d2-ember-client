@@ -1,21 +1,73 @@
-{{#if profile.first_name}}
-  Editing {{profile.first_name}} {{profile.last_name}}'s Profile #{{profile.id}}
-{{else}}
-  Create your new profile!
-{{/if}}
+  <div class="wrapper">
+    <article class="article-header">{{profile.first_name}} {{profile.last_name}}</article>
+    <article class="article-margin"></article>
 
-<form {{action 'editFirstName' on='submit'}}>
-  {{input placeholder='First Name'
-          class='input-group form-control'
-          value=profile.newFirstName
-  }}
-  {{input placeholder='Last Name'
-          class='input-group form-control'
-          value=profile.newLastName
-  }}
-  {{input placeholder='New Nationality'
-          class='input-group form-control'
-          value=profile.newNationality
-  }}
-  <input type='submit' value='Save'>
-</form>
+    <article class="main-photo">
+      <p></p>
+    </article>
+    <article class="vertical-margin vertical-margin-1"></article>
+    <article class="main">
+      <div class="prof-edit">
+        Editing {{profile.first_name}} {{profile.last_name}}'s Profile
+        <form {{action 'editFirstName' on='submit'}}>
+          <div class='prof-edit'>
+            {{input placeholder='First Name'
+                    class='input-group form-control prof-edit'
+                    value=profile.newFirstName
+            }}
+          </div>
+          <div class='prof-edit'>
+            {{input placeholder='Last Name'
+                    class='input-group form-control prof-edit'
+                    value=profile.newLastName
+            }}
+          </div>
+          <div class='prof-edit'>
+            {{input placeholder='New Nationality'
+                    class='input-group form-control prof-edit'
+                    value=profile.newNationality
+            }}
+          </div>
+          <div class='prof-edit'>
+            {{input placeholder='Ranking'
+                    class='input-group form-control prof-edit'
+                    value=profile.ranking
+            }}
+          </div>
+          <div class='prof-edit'>
+            {{input placeholder='Abandons'
+                    class='input-group form-control prof-edit'
+                    value=profile.abandons
+            }}
+          </div>
+          <div class='prof-edit'>
+            {{input placeholder='Reports'
+                    class='input-group form-control prof-edit'
+                    value=profile.reports
+            }}
+          </div>
+          <div class='prof-edit'>
+            <input type='submit' class="btn btn-secondary style-button" value='Save'>
+          </div>
+        </form>
+      </div>
+    </article>
+    <article class="vertical-margin-2"></article>
+    <aside class="aside aside-2">
+      <div>Positions:</div>
+      <section title=".squaredThree">
+        {{position-checkbox label='Carry' value=profile.carry toggle='toggleProp'}}
+        {{position-checkbox label='Support' value=profile.support toggle='toggleProp'}}
+        {{position-checkbox label='Mid' value=profile.mid toggle='toggleProp'}}
+        {{position-checkbox label='Roamer' value=profile.roamer toggle='toggleProp'}}
+        {{position-checkbox label='Jungler' value=profile.jungler toggle='toggleProp'}}
+        {{position-checkbox label='Offlaner' value=profile.offlaner toggle='toggleProp'}}
+      </section>
+    </aside>
+    <article class="article-margin-3"></article>
+    <footer class="footer">
+      {{#link-to 'profile' profile class="btn btn-secondary style-button"}}
+        Profile
+      {{/link-to}}
+    </footer>
+  </div>

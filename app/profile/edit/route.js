@@ -1,10 +1,16 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+  tagName: '',
+
   model (params) {
     return this.get('store').findRecord('profile', params.id);
   },
   actions: {
+    toggle (profile) {
+      profile.save()
+      .catch(console.error);
+    },
     editFirstName: function(profile){
       if(profile.newFirstName){
         profile.set('first_name', profile.newFirstName);

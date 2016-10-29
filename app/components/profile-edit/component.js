@@ -5,9 +5,13 @@ export default Ember.Component.extend({
 
   actions: {
     editFirstName: function(){
-      console.log("Inside profile-edit editFirstName");
-      console.log("Profile is ", this.get('profile'));
       this.sendAction('editFirstName', this.get('profile'));
+    },
+    toggleProp: function(prop, key){
+      let profile = this.get('profile');
+      key = key.toLowerCase();
+      profile.set(key, !prop);
+      this.sendAction('toggle', profile);
     },
   },
 });
