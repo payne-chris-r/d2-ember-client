@@ -15,19 +15,23 @@
           <th>Languages:</th>
           <th>Status:</th>
         </tr>
-      </thead>  
+      </thead>
       <tbody>
         {{#each game.profiles as |profile spot|}}
           <tr>
             {{player-row game=game
-                           profile=profile
-                           current=profile_id
-                           leaveGame='leaveGame'}}
+                         profile=profile
+                         current=profile_id
+                         leaveGame='leaveGame'
+                         unAuth='unAuth'}}
           </tr>
         {{/each}}
         {{#each (range game.profiles.length 5) as |index|}}
           <tr>
-            {{player-row game=game joinGame='joinGame' leaveGame='leaveGame'}}
+            {{player-row game=game
+                         joinGame='joinGame'
+                         leaveGame='leaveGame'
+                         unAuth='unAuth'}}
           </tr>
         {{/each}}
       </tbody>

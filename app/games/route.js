@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Route.extend({
   auth: Ember.inject.service(),
   classNames: ['main-div'],
-  
+
   model () {
     return this.get('store').findAll('game');
   },
@@ -22,12 +22,16 @@ export default Ember.Route.extend({
 
   actions: {
     unAuth: function(){
+      console.log("unauthorized");
+      this.get('flashMessages')
+        .warning('You need to sign in to perform that action.');
       this.transitionTo('sign-in');
     },
     joinGame: function(game){
       let newPlayer = this.get('store').createRecord('player', newPlayer);
       this.get('store').findRecord('profile', this.get('profile_id'))
         .then((profile)=>{
+          console.log("profile is ", this.get('profile.id'));
           this.get('store').findRecord('game', +game.id)
             .then((game)=>{
               newPlayer.set('game', game);

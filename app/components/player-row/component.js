@@ -6,11 +6,21 @@ export default Ember.Component.extend({
 
   tagName: '',
   actions: {
-    joinGame (game) {
-      this.sendAction('joinGame', this.get('game'));
+    joinGame (game){
+      if(this.get('profile_id')){
+        this.sendAction('joinGame', game);
+      }
+      else{
+        this.sendAction('unAuth');
+      }
     },
-    leaveGame (game) {
-      this.sendAction('leaveGame', game);
+    leaveGame(game) {
+      if(this.get('profile_id')){
+        this.sendAction('leaveGame', game);
+      }
+      else{
+        this.sendAction('unAuth');
+      }
     }
   }
 });
