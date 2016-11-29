@@ -23,7 +23,7 @@
                        leaveGame='leaveGame'}}
         </tr>
       {{/each}}
-      {{#each (range game.profiles.length 5) as |index|}}
+      {{#each (range model.profiles.length 5) as |index|}}
         <tr>
           {{player-row game=model
                        joinGame='joinGame'
