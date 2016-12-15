@@ -22,7 +22,6 @@ export default Ember.Route.extend({
 
   actions: {
     unAuth: function(){
-      console.log("unauthorized");
       this.get('flashMessages')
         .warning('You need to sign in to perform that action.');
       this.transitionTo('sign-in');
@@ -41,7 +40,7 @@ export default Ember.Route.extend({
               newPlayer.set('kills', 3);
             })
             .then(()=> newPlayer.save())
-            .then(()=> this.transitionTo('game', game.id))
+            // .then(()=> this.transitionTo('game', game.id))
             .catch((err)=>{
               // if err == user is already in that game
               // elsif err = game is full.
