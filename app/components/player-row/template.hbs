@@ -4,14 +4,52 @@
   <td> {{profile.nationality}} </td>
   <td> {{profile.ranking}} </td>
   <td>
-      <td> 1 </td>
-      <td> 1 </td>
-      <td> 1 </td>
-      <td> 1 </td>
-      <td> 1 </td>
+      <td>
+        {{#if profile.carry}}
+          C
+        {{/if}}
+      </td>
+      <td>
+        {{#if profile.support}}
+          S
+        {{/if}}
+      </td>
+      <td>
+        {{#if profile.mid}}
+          M
+        {{/if}}
+      </td>
+      <td>
+        {{#if profile.offlaner}}
+          O
+        {{/if}}
+      </td>
+      <td>
+        {{#if profile.jungler}}
+          J
+        {{/if}}
+      </td>
   </td>
-  <td> 32/2 </td>
-  <td> English </td>
+  <td>
+    {{#if profile.abandons}}
+      {{profile.abandons}}
+    {{else}}
+      0
+    {{/if}}
+      /
+    {{#if profile.reports}}
+      {{profile.reports}}
+    {{else}}
+      0
+    {{/if}}
+  </td>
+  <td>
+    {{#if profile.language}}
+      {{profile.language}}
+    {{else}}
+      Unkown
+    {{/if}}
+  </td>
   <td>
     {{#if (eql profile_id profile.id)}}
       {{leave-team game=game leaveGame='leaveGame'}}
@@ -27,5 +65,7 @@
   <td> &nbsp; </td>
   <td> &nbsp; </td>
   <td> &nbsp; </td>
-  <td> {{join-team game=game joinGame='joinGame'}} </td>
+  <td>
+    {{join-team game=game joinGame='joinGame'}}
+  </td>
 {{/if}}
