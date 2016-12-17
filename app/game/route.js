@@ -19,40 +19,61 @@ export default Ember.Route.extend({
         .warning('You need to sign in to perform that action.');
       this.transitionTo('sign-in');
     },
-    joinGame: function(game){
-      let newPlayer = this.get('store').createRecord('player', newPlayer);
-      newPlayer.set('game', game);
-      this.get('store').findRecord('profile', this.get('profile_id'))
-      // profile.get('players').pushObject?('players')
-        // .then(()=>{
-        //   console.log("game is ", game);
-        //   console.log('game.id is', game.get('id'));
-        //   debugger;
-        //   return this.get('store').findRecord('game', +game.id);
-        // })
-        // .then((game)=>{
-        //   console.log("game is ", game);
-        //   console.log('game.id is', game.get('id'));
-        //   debugger;
-        //   newPlayer.set('game', game);
-        // })
-        .then(()=>{
-          newPlayer.set('character_id', 3);
-          newPlayer.set('kills', 3);
+    joinGame(game){
+      let player = this.get('store').createRecord('player');
+      player.set('character_id', 3);
+      player.set('kills', 3);
+      player.set('game', game);
+      player.save();
+      // the work/not work is the findRecord on the game.
+      // I think ember is only putting an observable on this game
+      // when you do a findRecord. Otherwise, it's stale.
+      this.get('store').findRecord('game', game.get('id'))
+        .then((game)=>{
+          player.set('game', game);
+          return player.save();
         })
-        .then(()=> {
-          newPlayer.save();
-        })
-        // force a refresh of the page <--probably better way to do this
-        .then(()=> this.transitionTo('games'))
-        .then(()=> this.transitionTo('game', game.id))
-        .catch(()=>{
-          // if err == user is already in that game
-          // elsif err = game is full.
-          this.get('flashMessages').warning('You are already in that game, or the game is currently full.');
-          this.transitionTo('game', game.id);
-        });
+        .catch(console.error);
+
+      // so you either need to do this ^
+      // OR
+      // this:
+      // this.transitionTo('games');
+      // this.transitionTo('game');
     },
+    // joinGame: function(game){
+    //   let newPlayer = this.get('store').createRecord('player', newPlayer);
+    //   this.get('store').findRecord('profile', this.get('profile_id'))
+    //   // profile.get('players').pushObject?('players')
+    //     // .then(()=>{
+    //     //   console.log("game is ", game);
+    //     //   console.log('game.id is', game.get('id'));
+    //     //   debugger;
+    //     //   return this.get('store').findRecord('game', +game.id);
+    //     // })
+    //     // .then((game)=>{
+    //     //   console.log("game is ", game);
+    //     //   console.log('game.id is', game.get('id'));
+    //     //   debugger;
+    //     //   newPlayer.set('game', game);
+    //     // })
+    //     .then(()=>{
+    //       newPlayer.set('character_id', 3);
+    //       newPlayer.set('kills', 3);
+    //     })
+    //     .then(()=> {
+    //       newPlayer.save();
+    //     })
+    //     // force a refresh of the page <--probably better way to do this
+    //     .then(()=> this.transitionTo('games'))
+    //     .then(()=> this.transitionTo('game', game.id))
+    //     .catch(()=>{
+    //       // if err == user is already in that game
+    //       // elsif err = game is full.
+    //       this.get('flashMessages').warning('You are already in that game, or the game is currently full.');
+    //       this.transitionTo('game', game.id);
+    //     });
+    // },
     // joinGame: function(game){
     //   let newPlayer = this.get('store').createRecord('player');
     //   // ?????

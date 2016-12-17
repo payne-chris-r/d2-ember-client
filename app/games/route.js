@@ -31,7 +31,7 @@ export default Ember.Route.extend({
       this.get('store').findRecord('profile', this.get('profile_id'))
         .then((profile)=>{
           console.log("profile is ", this.get('profile.id'));
-          this.get('store').findRecord('game', +game.id)
+          return this.get('store').findRecord('game', +game.id)
             .then((game)=>{
               newPlayer.set('game', game);
             })
