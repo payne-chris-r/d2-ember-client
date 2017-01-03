@@ -1,6 +1,6 @@
+{{game-finder}}
 <div class="container">
   <h2>Games</h2>
-
   {{#each model as |game|}}
     <h3>{{#link-to "game" game }} Game {{game.id}}{{/link-to}}</h3>
     <table class="table table-striped game-table">

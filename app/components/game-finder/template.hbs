@@ -1,22 +1,22 @@
 <div class="filter-row">
   <div class="collapse navbar-collapse">
     <ul class="nav navbar-nav">
+      <li>Filter: </li>
+    </ul>
+    <ul class="nav navbar-nav filter-bar">
       {{#if isAuthenticated}}
-      <li>MMR Filter:</li>
+        {{filter-dropdown title='MMR' topFilter='Max MMR' bottomFilter='Min MMR'}}
       {{/if}}
     </ul>
-    <ul class="nav navbar-nav">
+    <ul class="nav navbar-nav filter-bar">
       {{#if isAuthenticated}}
-        Language Filter:
+        {{filter-dropdown title='Language' topFilter='Primary' bottomFilter='Secondary'}}
       {{/if}}
     </ul>
-    <ul class="nav navbar-nav">
+    <ul class="nav navbar-nav filter-bar">
       {{#if isAuthenticated}}
-        Position Filter:
+        {{filter-dropdown title='Position' topFilter='Needs' bottomFilter='Has'}}
       {{/if}}
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li>{{#link-to "sign-in"}}Submit{{/link-to}}</li>
     </ul>
   </div>
 </div>
